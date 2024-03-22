@@ -1,0 +1,70 @@
+Dataparser.h
+#ifndef DATAPARSER_H
+#define DATAPARSER_H
+#include "datatypedef.h"
+
+class CDataParser
+{
+public:
+    CDataParser();
+    ~CDataParser();
+public:
+    RECCTRL			m_RecCtrl;
+    bool			m_TimeFlag ;
+    public:
+};
+
+#endif // DATAPARSER_H
+
+Datatypeder.h
+#ifndef DATATYPEDEF_H
+#define DATATYPEDEF_H
+
+#include <QMetaType>
+
+
+#define u1 unsigned char
+#define u2 unsigned short
+#define u4 unsigned int
+#define i1 char
+#define i2 short
+#define i4 int
+#define f4 float
+typedef	long			i5;
+typedef	unsigned long	u5;
+#define f8 double
+
+#ifndef _MFC_PLAT
+#define LONG	int
+#define BYTE	unsigned char
+#define DWORD	unsigned int
+#define WORD	unsigned short
+#define BOOL	unsigned char
+#endif
+
+enum COMId //定义串口信息
+{
+    COM_NULL =-1,
+    COM0 = 0,
+    COM1 = 1,
+    COM2= 2
+};
+
+#define MAX_BUF_LEN  4096
+#define	OBS_BUF_LEN	 5
+
+enum eRECSTATE
+{
+    SYNC,		//同步中
+    RECEIVING	, //接收中
+};
+
+typedef struct
+{
+    eRECSTATE       stat;	//状态
+    unsigned int    len;	//数据长度
+    unsigned int   	cnt;	//接收计数
+    unsigned char   buf[MAX_BUF_LEN];
+}RECCTRL;
+
+#endif // DATATYPEDEF_H
